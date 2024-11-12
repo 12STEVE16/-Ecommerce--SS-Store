@@ -153,46 +153,20 @@
                         </a>
                         <div class="categori-dropdown-wrap categori-dropdown-active-small">
                             <ul>
-                                <!-- <li><a href="shop-grid-right.html"><i class="evara-font-dress"></i>Women's Clothing</a></li> -->
+                                
                                 <li><a href="shop-grid-right.html"><i class="evara-font-tshirt"></i>Clothing</a></li>
-                                <!-- <li> <a href="shop-grid-right.html"><i class="evara-font-smartphone"></i> Cellphones</a></li>
-                                <li><a href="shop-grid-right.html"><i class="evara-font-desktop"></i>Computer & Office</a></li> -->
+                                
                                 <li><a href="shop-grid-right.html"><i class="evara-font-cpu"></i>Gear</a></li>
-                                <!-- <li><a href="shop-grid-right.html"><i class="evara-font-home"></i>Home & Garden</a></li>
-                                <li><a href="shop-grid-right.html"><i class="evara-font-high-heels"></i>Shoes</a></li>
-                                <li><a href="shop-grid-right.html"><i class="evara-font-teddy-bear"></i>Mother & Kids</a></li>
-                                <li><a href="shop-grid-right.html"><i class="evara-font-kite"></i>Outdoor fun</a></li> -->
+                                
                             </ul>
                         </div>
                     </div>
                     <!-- mobile menu start -->
                     <nav>
                         <ul class="mobile-menu">
-                            <li class="menu-item"><span ></span><a href="/">Home</a>
-                                <!-- <ul class="dropdown">
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index-2.html">Home 2</a></li>
-                                    <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index-4.html">Home 4</a></li>
-                                </ul> -->
-                            </li>
-                            <li class="menu-item"><span ></span><a href="">Clothing</a>
-                                <!-- <ul class="dropdown">
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index-2.html">Home 2</a></li>
-                                    <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index-4.html">Home 4</a></li>
-                                </ul> -->
-                            </li>
-                            <li class="menu-item"><span ></span><a href="">Gear</a>
-                                <!-- <ul class="dropdown">
-                                    <li><a href="index.html">Home 1</a></li>
-                                    <li><a href="index-2.html">Home 2</a></li>
-                                    <li><a href="index-3.html">Home 3</a></li>
-                                    <li><a href="index-4.html">Home 4</a></li>
-                                </ul> -->
-                            </li>
-                            
+                            <li class="menu-item"><span ></span><a href="/">Home</a></li>
+                            <li class="menu-item"><span ></span><a href="/allProducts?ParentCategory=Clothings">Clothing</a></li>
+                            <li class="menu-item"><span ></span><a href="/allProducts?ParentCategory=Gear">Gear</a></li>
                         </ul>
                     </nav>
                     <!-- mobile menu end -->
@@ -238,20 +212,22 @@
                                 <div class="dashboard-menu">
                                     <ul class="nav flex-column" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" href="#dashboard" role="tab" aria-controls="dashboard" aria-selected="false"><i class="fi-rs-settings-sliders mr-10"></i>Dashboard</a>
+                                            <a class="nav-link active" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Profile</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" id="orders-tab" data-bs-toggle="tab" href="#orders" role="tab" aria-controls="orders" aria-selected="false"><i class="fi-rs-shopping-bag mr-10"></i>Orders</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="track-orders-tab" data-bs-toggle="tab" href="#track-orders" role="tab" aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Track Your Order</a>
+                                            <a class="nav-link" id="account-password-tab" data-bs-toggle="tab" href="#account-password" role="tab" aria-controls="account-password" aria-selected="true"><i class="fi-rs-user mr-10"></i>Login & security</a>
                                         </li>
+                                        
                                         <li class="nav-item">
                                             <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab" aria-controls="address" aria-selected="true"><i class="fi-rs-marker mr-10"></i>My Address</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="account-detail-tab" data-bs-toggle="tab" href="#account-detail" role="tab" aria-controls="account-detail" aria-selected="true"><i class="fi-rs-user mr-10"></i>Account details</a>
+                                            <a class="nav-link" id="track-orders-tab" data-bs-toggle="tab" href="#track-orders" role="tab" aria-controls="track-orders" aria-selected="false"><i class="fi-rs-shopping-cart-check mr-10"></i>Coupons & Offers</a>
                                         </li>
+                                        
                                         <li class="nav-item">
                                             <a class="nav-link" href="/logout"><i class="fi-rs-sign-out mr-10"></i>Logout</a>
                                         </li>
@@ -260,7 +236,7 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="tab-content dashboard-content">
-                                    <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+                                    <div class="tab-pane fade " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
                                         <div class="card">
                                             <div class="card-header">
                                               
@@ -341,79 +317,131 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="card mb-3 mb-lg-0">
-                                                    <div class="card-header">
-                                                        <h5 class="mb-0">Billing Address</h5>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <address>3522 Interstate<br> 75 Business Spur,<br> Sault Ste. <br>Marie, MI 49783</address>
-                                                        <p>New York</p>
-                                                        <a href="#" class="btn-small">Edit</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <h5 class="mb-0">Shipping Address</h5>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <address>4299 Express Lane<br>
-                                                            Sarasota, <br>FL 34249 USA <br>Phone: 1.941.227.4444</address>
-                                                        <p>Sarasota</p>
-                                                        <a href="#" class="btn-small">Edit</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
                                         <div class="card">
                                             <div class="card-header">
-                                                <h5>Account Details</h5>
+                                                <h5>Address</h5>
                                             </div>
                                             <div class="card-body">
-                                                <p>Already have an account? <a href="page-login-register.html">Log in instead!</a></p>
-                                                <form method="post" name="enq">
+                                                <form method="post" id="addressForm">
                                                     <div class="row">
+                                                        <div class="form-group col-md-12">
+                                                            <label>Address Line 1 <span class="required"></span></label>
+                                                            <input required="" class="form-control square" name="addressLine1" type="text" value="<%= user.address ? user.address.addressLine1 : '' %>">
+                                                        </div>
                                                         <div class="form-group col-md-6">
-                                                            <label>First Name <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="name" type="text">
+                                                            <label>Address Line 2 <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="addressLine2" type="text" value="<%= user.address ? user.address.addressLine2 : '' %>">
                                                         </div>
                                                         <div class="form-group col-md-6">
-                                                            <label>Last Name <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="phone">
+                                                            <label>Suburb <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="suburb" type="text" value="<%= user.address ? user.address.suburb : '' %>">
                                                         </div>
-                                                        <div class="form-group col-md-12">
-                                                            <label>Display Name <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="dname" type="text">
+                                                        <div class="form-group col-md-6">
+                                                            <label>City <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="city" type="text" value="<%= user.address ? user.address.city : '' %>">
                                                         </div>
-                                                        <div class="form-group col-md-12">
-                                                            <label>Email Address <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="email" type="email">
+                                                        <div class="form-group col-md-6">
+                                                            <label>State <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="state" type="text" value="<%= user.address ? user.address.state : '' %>">
                                                         </div>
-                                                        <div class="form-group col-md-12">
-                                                            <label>Current Password <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="password" type="password">
-                                                        </div>
-                                                        <div class="form-group col-md-12">
-                                                            <label>New Password <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="npassword" type="password">
-                                                        </div>
-                                                        <div class="form-group col-md-12">
-                                                            <label>Confirm Password <span class="required">*</span></label>
-                                                            <input required="" class="form-control square" name="cpassword" type="password">
+                                                        <div class="form-group col-md-6">
+                                                            <label>Postcode <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="postcode" type="text" value="<%= user.address ? user.address.postcode : '' %>">
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Save</button>
+                                                            <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Update</button>
                                                         </div>
                                                     </div>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <div class="tab-pane fade active show" id="account-detail" role="tabpanel" aria-labelledby="account-detail-tab">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h5>Account Details</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <form method="post" id="accountDetailForm">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-12">
+                                                            <label>Email Address <span class="required"></span></label>
+                                                            <input required="" class="form-control square" name="email" type="email" value="<%= user.username %>" readonly>
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label>First Name <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="firstName" type="text" value="<%= user.firstName %>">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label>Last Name <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="lastName" type="text" value="<%= user.lastName %>">
+                                                        </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label>Phone Number <span class="required">*</span></label>
+                                                            <input required="" class="form-control square" name="phone" type="text" value="<%= user.mobile %>">
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <button type="submit" class="btn btn-fill-out submit" name="submit" value="Submit">Update</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% if (user.isLocalAccount) { %>
+                                        <div class="tab-pane fade" id="account-password" role="tabpanel" aria-labelledby="account-password-tab">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Password</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form method="post" id="accountPasswordForm">
+                                                        <div class="row">
+                                                            <div class="form-group col-md-12">
+                                                                <label>Current Password <span class="required">*</span></label>
+                                                                <input class="form-control square" name="currentPassword" type="password" id="currentPassword">
+                                                                <div id="currentPasswordError" style="color: red;"></div>
+                                                            </div>
+                                                            <div class="form-group col-md-12">
+                                                                <label>New Password <span class="required">*</span></label>
+                                                                <input class="form-control square" name="password" type="password" id="password">
+                                                                <div id="passwordError" style="color: red;"></div>
+                                                            </div>
+                                                            <div class="form-group col-md-12">
+                                                                <label>Confirm Password <span class="required">*</span></label>
+                                                                <input class="form-control square" name="confirmPassword" type="password" id="confirmPassword">
+                                                                <div id="confirmPasswordError" style="color: red;"></div>
+                                                            </div>
+                                                            <input type="hidden" name="userId" value="<%= user._id %>">
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <button type="submit" class="btn btn-fill-out submit" name="submit" id="submit" value="Submit">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } else { %>
+                                        <div class="tab-pane fade" id="account-password" role="tabpanel" aria-labelledby="account-password-tab">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5>Password</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p>Your account was registered using 
+                                                        <% if (user.googleId) { %>
+                                                            Google
+                                                        <% } else if (user.facebookId) { %>
+                                                            Facebook
+                                                        <% } %>
+                                                        . You cannot change the password for this account.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                        
                                 </div>
                             </div>
                         </div>
@@ -563,6 +591,270 @@
     <script src="assets/js/plugins/jquery.theia.sticky.js"></script>
     <!-- Template  JS -->
     <script src="assets/js/main.js"></script>
+    <script>
+        document.getElementById('accountPasswordForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+        
+            const currentPassword = document.getElementById('currentPassword').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+        
+            let isValid = true;
+        
+            // Clear previous errors
+            document.getElementById('currentPasswordError').textContent = '';
+            document.getElementById('passwordError').textContent = '';
+            document.getElementById('confirmPasswordError').textContent = '';
+        
+            // Client-side validation
+            if (!currentPassword) {
+                document.getElementById('currentPasswordError').textContent = 'Current password is required';
+                isValid = false;
+            }
+            if (!password) {
+                document.getElementById('passwordError').textContent = 'New password is required';
+                isValid = false;
+            }
+            if (!confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Confirm password is required';
+                isValid = false;
+            }
+            if (password && confirmPassword && password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+                isValid = false;
+            }
+        
+            if (isValid) {
+                const formData = new FormData(this);
+                const data = {
+                    currentPassword: formData.get('currentPassword'),
+                    password: formData.get('password'),
+                    confirmPassword: formData.get('confirmPassword'),
+                    userId: formData.get('userId')
+                };
+        
+                fetch('/updatePassword', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: data.message,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'An error occurred while updating your password.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
+            }
+        });
+        </script>
+
+
+    <script>
+document.getElementById('accountPasswordForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const currentPassword = document.getElementById('currentPassword').value;
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    let isValid = true;
+
+    // Clear previous errors
+    document.getElementById('currentPasswordError').textContent = '';
+    document.getElementById('passwordError').textContent = '';
+    document.getElementById('confirmPasswordError').textContent = '';
+
+    // Client-side validation
+    if (!currentPassword) {
+        document.getElementById('currentPasswordError').textContent = 'Current password is required';
+        isValid = false;
+    }
+    if (!password) {
+        document.getElementById('passwordError').textContent = 'New password is required';
+        isValid = false;
+    } else if (password.length < 8) {
+        document.getElementById('passwordError').textContent = 'New password must be at least 8 characters long';
+        isValid = false;
+    }
+    if (!confirmPassword) {
+        document.getElementById('confirmPasswordError').textContent = 'Confirm password is required';
+        isValid = false;
+    }
+    if (password && confirmPassword && password !== confirmPassword) {
+        document.getElementById('confirmPasswordError').textContent = 'Passwords do not match';
+        isValid = false;
+    }
+
+    if (isValid) {
+        const formData = new FormData(this);
+        const data = {
+            currentPassword: formData.get('currentPassword'),
+            password: formData.get('password'),
+            confirmPassword: formData.get('confirmPassword'),
+            userId: formData.get('userId')
+        };
+
+        fetch('/updatePassword', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then(() => {
+                    location.reload();
+                });
+            } else {
+                Swal.fire({
+                    title: 'Error!',
+                    text: data.message,
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+            }
+        })
+        .catch(error => {
+            Swal.fire({
+                title: 'Error!',
+                text: 'An error occurred while updating your password.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    }
+});
+</script>    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.getElementById('addressForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = {
+                addressLine1: formData.get('addressLine1'),
+                addressLine2: formData.get('addressLine2'),
+                suburb: formData.get('suburb'),
+                city: formData.get('city'),
+                state: formData.get('state'),
+                postcode: formData.get('postcode')
+            };
+
+            fetch('/updateAddress', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: data.message,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'An error occurred while updating your address.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
+        });
+
+        document.getElementById('accountDetailForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            const data = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                phone: formData.get('phone')
+            };
+
+            fetch('/updateAccount', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire({
+                            title: 'Error!',
+                            text: data.message,
+                            icon: 'error',
+                            confirmButtonText: 'OK'
+                        });
+                    }
+                })
+                .catch(error => {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: 'An error occurred while updating your account.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+                });
+        });
+    </script>
 </body>
 
 

@@ -48,54 +48,73 @@
                             <div class="header-action-2">
                                 <div class="header-action-icon-2">
                                     <a href="/account">
-                                        <img class="svgInject" alt="Evara" src="https://img.icons8.com/wired/64/guest-male.png" alt="guest-male">
+                                        <img class="svgInject" alt="Evara" src="assets/imgs/theme/icons/icon-user.svg" alt="guest-male">
                                         <!-- <span class="pro-count blue">4</span> -->
                                         
                                     </a>
                                 </div>
-                                <div class="header-action-icon-2">
-                                    <a class="mini-cart-icon" href="shop-cart.html">
+                                <% if (user) { %>
+                                    <div class="header-action-icon-2">
+                                      <a href="shop-wishlist.html">
+                                        <img class="svgInject" alt="Evara" src="assets/imgs/theme/icons/icon-heart.svg">
+                                        <span class="pro-count blue">4</span>
+                                      </a>
+                                    </div>
+                                    <div class="header-action-icon-2">
+                                      <a class="mini-cart-icon" href="/cart">
                                         <img alt="Evara" src="assets/imgs/theme/icons/icon-cart.svg">
                                         <span class="pro-count blue">2</span>
-                                    </a>
-                                    <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                      </a>
+                                      <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                         <ul>
-                                            <li>
-                                                <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.html"><img alt="Evara" src="assets/imgs/shop/thumbnail-3.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
-                                                    <h4><span>1 × </span>$800.00</h4>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.html"><img alt="Evara" src="assets/imgs/shop/thumbnail-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
-                                                    <h4><span>1 × </span>$3200.00</h4>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                                </div>
-                                            </li>
+                                          <li>
+                                            <div class="shopping-cart-img">
+                                              <a href="shop-product-right.html"><img alt="Evara" src="assets/imgs/shop/thumbnail-3.jpg"></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                              <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
+                                              <h4><span>1 × </span>$800.00</h4>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                              <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="shopping-cart-img">
+                                              <a href="shop-product-right.html"><img alt="Evara" src="assets/imgs/shop/thumbnail-2.jpg"></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                              <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
+                                              <h4><span>1 × </span>$3200.00</h4>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                              <a href="#"><i class="fi-rs-cross-small"></i></a>
+                                            </div>
+                                          </li>
                                         </ul>
                                         <div class="shopping-cart-footer">
-                                            <div class="shopping-cart-total">
-                                                <h4>Total <span>$4000.00</span></h4>
-                                            </div>
-                                            <div class="shopping-cart-button">
-                                                <a href="shop-cart.html" class="outline">View cart</a>
-                                                <a href="shop-checkout.html">Checkout</a>
-                                            </div>
+                                          <div class="shopping-cart-total">
+                                            <h4>Total <span>$4000.00</span></h4>
+                                          </div>
+                                          <div class="shopping-cart-button">
+                                            <a href="/cart/add/<%= products._id %>" class="outline">View cart</a>
+                                            <a href="shop-checkout.html">Checkout</a>
+                                          </div>
                                         </div>
+                                      </div>
                                     </div>
-                                </div>
+                                  <% } else { %>
+                                    <div class="header-action-icon-2">
+                                      <a href="/cart">
+                                        <img class="svgInject" alt="Evara" src="assets/imgs/theme/icons/icon-heart.svg">
+                                      </a>
+                                    </div>
+                                    <div class="header-action-icon-2">
+                                      <a class="mini-cart-icon" href="/cart">
+                                        <img alt="Evara" src="assets/imgs/theme/icons/icon-cart.svg">
+                                      </a>
+                                    </div>
+                                  <% } %>
                             </div>
                         </div>
                     </div>
@@ -293,14 +312,7 @@
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <!-- <li><a class="active" href="index.html">Home <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="index.html">Home 1</a></li>
-                                            <li><a href="index-2.html">Home 2</a></li>
-                                            <li><a href="index-3.html">Home 3</a></li>
-                                            <li><a href="index-4.html">Home 4</a></li>
-                                        </ul>
-                                    </li> -->
+                                    
                                     <li>
                                         <a class="active" href="/">Home</a>
                                     </li>
@@ -313,115 +325,7 @@
                                     <li>
                                         <a href="/allProducts">All product</a>
                                     </li>
-                                                                        
-                                    <!-- <li><a href="shop-grid-right.html">Shop <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
-                                            <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
-                                            <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
-                                            <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
-                                            <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
-                                            <li><a href="#">Single Product <i class="fi-rs-angle-right"></i></a>
-                                                <ul class="level-menu">
-                                                    <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
-                                                    <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
-                                                    <li><a href="shop-product-full.html">Product – No sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="shop-filter.html">Shop – Filter</a></li>
-                                            <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                            <li><a href="shop-cart.html">Shop – Cart</a></li>
-                                            <li><a href="shop-checkout.html">Shop – Checkout</a></li>
-                                            <li><a href="shop-compare.html">Shop – Compare</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="position-static"><a href="#">Mega menu <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="mega-menu">
-                                            <li class="sub-mega-menu sub-mega-menu-width-22">
-                                                <a class="menu-title" href="#">Women's Fashion</a>
-                                                <ul>
-                                                    <li><a href="shop-product-right.html">Dresses</a></li>
-                                                    <li><a href="shop-product-right.html">Blouses & Shirts</a></li>
-                                                    <li><a href="shop-product-right.html">Hoodies & Sweatshirts</a></li>
-                                                    <li><a href="shop-product-right.html">Wedding Dresses</a></li>
-                                                    <li><a href="shop-product-right.html">Prom Dresses</a></li>
-                                                    <li><a href="shop-product-right.html">Cosplay Costumes</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="sub-mega-menu sub-mega-menu-width-22">
-                                                <a class="menu-title" href="#">Men's Fashion</a>
-                                                <ul>
-                                                    <li><a href="shop-product-right.html">Jackets</a></li>
-                                                    <li><a href="shop-product-right.html">Casual Faux Leather</a></li>
-                                                    <li><a href="shop-product-right.html">Genuine Leather</a></li>
-                                                    <li><a href="shop-product-right.html">Casual Pants</a></li>
-                                                    <li><a href="shop-product-right.html">Sweatpants</a></li>
-                                                    <li><a href="shop-product-right.html">Harem Pants</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="sub-mega-menu sub-mega-menu-width-22">
-                                                <a class="menu-title" href="#">Technology</a>
-                                                <ul>
-                                                    <li><a href="shop-product-right.html">Gaming Laptops</a></li>
-                                                    <li><a href="shop-product-right.html">Ultraslim Laptops</a></li>
-                                                    <li><a href="shop-product-right.html">Tablets</a></li>
-                                                    <li><a href="shop-product-right.html">Laptop Accessories</a></li>
-                                                    <li><a href="shop-product-right.html">Tablet Accessories</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="sub-mega-menu sub-mega-menu-width-34">
-                                                <div class="menu-banner-wrap">
-                                                    <a href="shop-product-right.html"><img src="assets/imgs/banner/menu-banner.jpg" alt="Evara"></a>
-                                                    <div class="menu-banner-content">
-                                                        <h4>Hot deals</h4>
-                                                        <h3>Don't miss<br> Trending</h3>
-                                                        <div class="menu-banner-price">
-                                                            <span class="new-price text-success">Save to 50%</span>
-                                                        </div>
-                                                        <div class="menu-banner-btn">
-                                                            <a href="shop-product-right.html">Shop now</a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="menu-banner-discount">
-                                                        <h3>
-                                                            <span>35%</span>
-                                                            off
-                                                        </h3>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog-category-grid.html">Blog <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog-category-grid.html">Blog Category Grid</a></li>
-                                            <li><a href="blog-category-list.html">Blog Category List</a></li>
-                                            <li><a href="blog-category-big.html">Blog Category Big</a></li>
-                                            <li><a href="blog-category-fullwidth.html">Blog Category Wide</a></li>
-                                            <li><a href="#">Single Post <i class="fi-rs-angle-right"></i></a>
-                                                <ul class="level-menu level-menu-modify">
-                                                    <li><a href="blog-post-left.html">Left Sidebar</a></li>
-                                                    <li><a href="blog-post-right.html">Right Sidebar</a></li>
-                                                    <li><a href="blog-post-fullwidth.html">No Sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Pages <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="page-about.html">About Us</a></li>
-                                            <li><a href="page-contact.html">Contact</a></li>
-                                            <li><a href="page-account.html">My Account</a></li>
-                                            <li><a href="page-login-register.html">login/register</a></li>
-                                            <li><a href="page-purchase-guide.html">Purchase Guide</a></li>
-                                            <li><a href="page-privacy-policy.html">Privacy Policy</a></li>
-                                            <li><a href="page-terms.html">Terms of Service</a></li>
-                                            <li><a href="page-404.html">404 Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="page-contact.html">Contact</a>
-                                    </li> -->
+                                    
                                 </ul>
                             </nav>
                         </div>
@@ -439,7 +343,7 @@
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="shop-cart.html">
+                                <a class="mini-cart-icon" href="/cart>
                                     <img alt="Evara" src="assets/imgs/theme/icons/icon-cart.svg">
                                     <span class="pro-count white">2</span>
                                 </a>
@@ -602,44 +506,33 @@
                     <div class="col-lg-9">
                         <div class="shop-product-fillter">
                             <div class="totall-product">
-                                <p> We found <strong class="text-brand"><%= products.length %><span></span> product</strong> items for you!</p>
+                                <p> We found <strong class="text-brand"><%=totalProducts %><span></span> product</strong> items for you!</p>
                             </div>
                             <div class="sort-by-product-area">
-                                <div class="sort-by-cover mr-10">
-                                    <div class="sort-by-product-wrap">
-                                        <div class="sort-by">
-                                            <span><i class="fi-rs-apps"></i>Show:</span>
-                                        </div>
-                                        <div class="sort-by-dropdown-wrap">
-                                            <span> 50 <i class="fi-rs-angle-small-down"></i></span>
-                                        </div>
-                                    </div>
-                                    <div class="sort-by-dropdown">
-                                        <ul>
-                                            <li><a class="active" href="#">50</a></li>
-                                            <li><a href="#">100</a></li>
-                                            <li><a href="#">150</a></li>
-                                            <li><a href="#">200</a></li>
-                                            <li><a href="#">All</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                
                                 <div class="sort-by-cover">
                                     <div class="sort-by-product-wrap">
                                         <div class="sort-by">
                                             <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
                                         </div>
                                         <div class="sort-by-dropdown-wrap">
-                                            <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                            <span> 
+                                                <% if (!sortOrder || sortOrder === 'featured') { %> 
+                                                  Featured 
+                                                <% } else if (sortOrder === 'priceAsc') { %> 
+                                                  Price: Low to High 
+                                                <% } else if (sortOrder === 'priceDesc') { %> 
+                                                  Price: High to Low 
+                                                <% } %>
+                                                <i class="fi-rs-angle-small-down"></i>
+                                              </span>
                                         </div>
                                     </div>
                                     <div class="sort-by-dropdown">
                                         <ul>
-                                            <li><a class="active" href="#">Featured</a></li>
-                                            <li><a href="#">Price: Low to High</a></li>
-                                            <li><a href="#">Price: High to Low</a></li>
-                                            <li><a href="#">Release Date</a></li>
-                                            <li><a href="#">Avg. Rating</a></li>
+                                          <li><a class="<%= !sortOrder || sortOrder === 'featured' ? 'active' : '' %>" href="/allProducts?sortOrder=featured<%= categoryFilterValue ? `&Category=${categoryFilterValue}` : '' %>">Featured</a></li>
+                                          <li><a class="<%= sortOrder === 'priceAsc' ? 'active' : '' %>" href="/allProducts?sortOrder=priceAsc<%= categoryFilterValue ? `&Category=${categoryFilterValue}` : '' %>">Price: Low to High</a></li>
+                                          <li><a class="<%= sortOrder === 'priceDesc' ? 'active' : '' %>" href="/allProducts?sortOrder=priceDesc<%= categoryFilterValue ? `&Category=${categoryFilterValue}` : '' %>">Price: High to Low</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -748,35 +641,34 @@
                                 </ul>
                             </nav>
                         </div> -->
+                        <!-- Pagination -->
                         <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
                             <nav aria-label="Page navigation example">
-                              <ul class="pagination justify-content-start">
+                            <ul class="pagination justify-content-start">
                                 <li class="page-item">
-                                  <% if (page === 1) { %>
+                                <% if (page === 1) { %>
                                     <a class="page-link" disabled><i class="fi-rs-angle-double-small-left"><<</i></a>
-                                  <% } else { %>
-                                    <a class="page-link" href="/allProducts?page=<%= parseInt(page) - 1 %>"><i class="fi-rs-angle-double-small-left"><<</i></a>
-                                  <% } %>
-                                </li>
-                        
-                                <% for (let i = 1; i <= pageLimit; i++) { %>
-                                  <li class="page-item <%= i === page ? 'active' : '' %>">
-                                    <a class="page-link" href="/allProducts?page=<%= i %>"><%= i %></a>
-                                  </li>
+                                <% } else { %>
+                                    <a class="page-link" href="/allProducts?page=<%= parseInt(page) - 1 %><%= categoryFilterValue ? `&Category=${categoryFilterValue}` : '' %><%= sortOrder ? `&sortOrder=${sortOrder}` : '' %>"><i class="fi-rs-angle-double-small-left"><<</i></a>
                                 <% } %>
-                        
-                                <li class="page-item">
-                                  <% if (page === pageLimit) { %>
-                                    <a class="page-link" disabled><i class="fi-rs-angle-double-small-right">>></i></a>
-                                  <% } else { %>
-                                    <a class="page-link" href="/allProducts?page=<%= parseInt(page) + 1 %>"><i class="fi-rs-angle-double-small-right">>></i></a>
-                                  <% } %>
                                 </li>
-                              </ul>
+                                
+                                <% for (let i = 1; i <= pageLimit; i++) { %>
+                                <li class="page-item <%= i === page ? 'active' : '' %>">
+                                    <a class="page-link" href="/allProducts?page=<%= i %><%= categoryFilterValue ? `&Category=${categoryFilterValue}` : '' %><%= sortOrder ? `&sortOrder=${sortOrder}` : '' %>"><%= i %></a>
+                                </li>
+                                <% } %>
+                                
+                                <li class="page-item">
+                                <% if (page === pageLimit) { %>
+                                    <a class="page-link" disabled><i class="fi-rs-angle-double-small-right">>></i></a>
+                                <% } else { %>
+                                    <a class="page-link" href="/allProducts?page=<%= parseInt(page) + 1 %><%= categoryFilterValue ? `&Category=${categoryFilterValue}` : '' %><%= sortOrder ? `&sortOrder=${sortOrder}` : '' %>"><i class="fi-rs-angle-double-small-right">>></i></a>
+                                <% } %>
+                                </li>
+                            </ul>
                             </nav>
-                          </div>
-                        
-                          
+                        </div>
                     </div>
                     <div class="col-lg-3 primary-sidebar sticky-sidebar">
                         <div class="widget-category mb-30">
@@ -838,7 +730,6 @@
                                 <div class="bt-1 border-color-1"></div>
                             </div>
                             <% for (let i = 0; i < newProducts.length; i++) { %>
-                                <% console.log(newProducts) %>
                                 <div class="single-post clearfix">
                                   <div class="image">
                                     <% if (newProducts[i].images && newProducts[i].images.length > 0) { %>
@@ -900,27 +791,7 @@
     <footer class="main">
         <section class="newsletter p-30 text-white wow fadeIn animated">
             <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 mb-md-3 mb-lg-0">
-                        <div class="row align-items-center">
-                            <div class="col flex-horizontal-center">
-                                <img class="icon-email" src="/assets/imgs/theme/icons/icon-email.svg" alt="">
-                                <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
-                            </div>
-                            <div class="col my-4 my-md-0 des">
-                                <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>$25 coupon for first shopping.</strong></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <!-- Subscribe Form -->
-                        <form class="form-subcriber d-flex wow fadeIn animated">
-                            <input type="email" class="form-control bg-white font-small" placeholder="Enter your email">
-                            <button class="btn bg-dark text-white" type="submit">Subscribe</button>
-                        </form>
-                        <!-- End Subscribe Form -->
-                    </div>
-                </div>
+                
             </div>
         </section>
         <section class="section-padding footer-mid">

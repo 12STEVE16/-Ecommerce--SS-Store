@@ -63,69 +63,83 @@
                     <div class="logo logo-width-1">
                         <a href="/"><img src="assets/imgs/theme/logo.svg" alt="logo"></a>
                     </div>
-                    <div class="header-right">
-                        <div class="search-style-2">
-                            <form action="#">
-                                <select class="select-active">
-                                    <option>All Categories</option>
-                                    <option>Gear</option>
-                                    <option>Clothing</option>
-                                </select>
-                                <input type="text" placeholder="Search for items...">
-                            </form>
-                        </div>
+                    <div class="search-style-2">
+                        <form id="search-form">
+                          <select class="select-active">
+                            <option>All Categories</option>
+                            <option>Gear</option>
+                            <option>Clothing</option>
+                          </select>
+                          <input type="text" id="search-input" placeholder="Search for items...">
+                        </form>
+                        <div id="search-suggestions" class="suggestions-list"></div>
+                      </div>
+                      
+                          
                         <div class="header-action-right">
                             <div class="header-action-2">
                                 <div class="header-action-icon-2">
                                     <a href="/account">
-                                        <img class="svgInject" alt="Evara" src="https://img.icons8.com/wired/64/guest-male.png" alt="guest-male">
+                                        <img class="svgInject" alt="Evara" src="assets/imgs/theme/icons/icon-user.svg" alt="guest-male">
                                         <!-- <span class="pro-count blue">4</span> -->
                                         
                                     </a>
                                 </div>
-                                <div class="header-action-icon-2">
-                                    <a class="mini-cart-icon" href="shop-cart.html">
+                                
+                                <% if (user) { %>
+                                    <div class="header-action-icon-2">
+                                      <a href="shop-wishlist.html">
+                                        <img class="svgInject" alt="Evara" src="assets/imgs/theme/icons/icon-heart.svg">
+                                        <span class="pro-count blue"><%= user.cart.length %></span>
+                                      </a>
+                                    </div>
+                                    <div class="header-action-icon-2">
+                                      <a class="mini-cart-icon" href="/cart">
                                         <img alt="Evara" src="assets/imgs/theme/icons/icon-cart.svg">
-                                        <span class="pro-count blue">2</span>
-                                    </a>
-                                    <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                        <span class="pro-count blue"><%= user.cart.reduce((acc, item) => acc + item.quantity, 0) %></span>
+                                      </a>
+                                      <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                         <ul>
+                                            <% const startIdx = Math.max(0, user.cart.length - 2); %>
+                                            <% user.cart.slice(startIdx).forEach(item => { %>
                                             <li>
-                                                <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.html"><img alt="Evara" src="assets/imgs/shop/thumbnail-3.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="shop-product-right.html">Daisy Casual Bag</a></h4>
-                                                    <h4><span>1 × </span>$800.00</h4>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                                </div>
+                                              <div class="shopping-cart-img">
+                                                <a href="shop-product-right.html"><img alt="Evara" src="/uploads/croppedProducts/<%= item.productId.images[0].url %>"></a>
+                                              </div>
+                                              <div class="shopping-cart-title">
+                                                <h4 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;max-width: 150px; padding-top:1.5%; "><a href="shop-product-right.html"><%= item.productId.title.split(' ').slice(0, 2).join(' ') %></a></h4>
+                                                <h4><span><%= item.quantity %> × </span>$<%= item.productId.offerPrice %></h4>
+                                              </div>
+                                              <div class="shopping-cart-delete">
+                                                <a href="/cart/remove/<%= item.productId._id %>"><i class="fi-rs-cross-small"></i></a>
+                                              </div>
                                             </li>
-                                            <li>
-                                                <div class="shopping-cart-img">
-                                                    <a href="shop-product-right.html"><img alt="Evara" src="assets/imgs/shop/thumbnail-2.jpg"></a>
-                                                </div>
-                                                <div class="shopping-cart-title">
-                                                    <h4><a href="shop-product-right.html">Corduroy Shirts</a></h4>
-                                                    <h4><span>1 × </span>$3200.00</h4>
-                                                </div>
-                                                <div class="shopping-cart-delete">
-                                                    <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                                </div>
-                                            </li>
+                                          <% }); %>
                                         </ul>
                                         <div class="shopping-cart-footer">
-                                            <div class="shopping-cart-total">
-                                                <h4>Total <span>$4000.00</span></h4>
-                                            </div>
-                                            <div class="shopping-cart-button">
-                                                <a href="shop-cart.html" class="outline">View cart</a>
-                                                <a href="shop-checkout.html">Checkout</a>
-                                            </div>
+                                          <div class="shopping-cart-total">
+                                            <h4>Total <span>$<%= user.cart.reduce((acc, item) => acc + item.quantity * item.productId.offerPrice, 0) %></span></h4>
+                                          </div>
+                                          <div class="shopping-cart-button">
+                                            <a href="/cart" class="outline">View Full cart</a>
+                                            <a href="shop-checkout.html">Checkout</a>
+                                          </div>
                                         </div>
+                                      </div>
                                     </div>
-                                </div>
+                                  <% } else { %>
+                                    <div class="header-action-icon-2">
+                                      <a href="/cart">
+                                        <img class="svgInject" alt="Evara" src="assets/imgs/theme/icons/icon-heart.svg">
+                                      </a>
+                                    </div>
+                                    <div class="header-action-icon-2">
+                                      <a class="mini-cart-icon" href="/cart">
+                                        <img alt="Evara" src="assets/imgs/theme/icons/icon-cart.svg">
+                                      </a>
+                                    </div>
+                                  <% } %>
+                                                                 
                             </div>
                         </div>
                     </div>
@@ -151,14 +165,7 @@
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <!-- <li><a class="active" href="index.html">Home <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="index.html">Home 1</a></li>
-                                            <li><a href="index-2.html">Home 2</a></li>
-                                            <li><a href="index-3.html">Home 3</a></li>
-                                            <li><a href="index-4.html">Home 4</a></li>
-                                        </ul>
-                                    </li> -->
+                                   
                                     <li>
                                         <a class="active" href="/">Home</a>
                                     </li>
@@ -172,31 +179,7 @@
                                         <a href="/allProducts">All product</a>
                                     </li>
                                                                         
-                                    <!-- <li><a href="shop-grid-right.html">Shop <i class="fi-rs-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            <li><a href="shop-grid-right.html">Shop Grid – Right Sidebar</a></li>
-                                            <li><a href="shop-grid-left.html">Shop Grid – Left Sidebar</a></li>
-                                            <li><a href="shop-list-right.html">Shop List – Right Sidebar</a></li>
-                                            <li><a href="shop-list-left.html">Shop List – Left Sidebar</a></li>
-                                            <li><a href="shop-fullwidth.html">Shop - Wide</a></li>
-                                            <li><a href="#">Single Product <i class="fi-rs-angle-right"></i></a>
-                                                <ul class="level-menu">
-                                                    <li><a href="shop-product-right.html">Product – Right Sidebar</a></li>
-                                                    <li><a href="shop-product-left.html">Product – Left Sidebar</a></li>
-                                                    <li><a href="shop-product-full.html">Product – No sidebar</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="shop-filter.html">Shop – Filter</a></li>
-                                            <li><a href="shop-wishlist.html">Shop – Wishlist</a></li>
-                                            <li><a href="shop-cart.html">Shop – Cart</a></li>
-                                            <li><a href="shop-checkout.html">Shop – Checkout</a></li>
-                                            <li><a href="shop-compare.html">Shop – Compare</a></li>
-                                        </ul>
-                                    </li>
                                     
-                                    <li>
-                                        <a href="page-contact.html">Contact</a>
-                                    </li> -->
                                 </ul>
                             </nav>
                         </div>
@@ -208,13 +191,20 @@
                     <div class="header-action-right d-block d-lg-none">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                                <a href="shop-wishlist.html">
-                                    <img alt="Evara" src="https://img.icons8.com/wired/64/guest-male.png">
-                                    <!-- <span class="pro-count white">4</span> -->
+                                <a href="/account">
+                                    <img class="svgInject" alt="Evara" src="assets/imgs/theme/icons/icon-user.svg" alt="guest-male">
+                                    <!-- <span class="pro-count blue">4</span> -->
+                                    
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="shop-cart.html">
+                                <a href="shop-wishlist.html">
+                                    <img class="svgInject" alt="Evara" src="assets/imgs/theme/icons/icon-heart.svg">
+                                    <span class="pro-count blue">4</span>
+                                </a>
+                            </div>
+                            <div class="header-action-icon-2">
+                                <a class="mini-cart-icon" href="/cart/add/<%= products._id %>">
                                     <img alt="Evara" src="assets/imgs/theme/icons/icon-cart.svg">
                                     <span class="pro-count white">2</span>
                                 </a>
@@ -250,7 +240,7 @@
                                             <h4>Total <span>$383.00</span></h4>
                                         </div>
                                         <div class="shopping-cart-button">
-                                            <a href="shop-cart.html">View cart</a>
+                                            <a href="/cart/add/<%= products._id %>">View cart</a>
                                             <a href="shop-checkout.html">Checkout</a>
                                         </div>
                                     </div>
@@ -433,15 +423,15 @@
             <div class="container">
                 <div class="tab-header">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
+                        <!-- <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Featured</button>
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Popular</button>
                         </li>
-                        <li class="nav-item" role="presentation">
+                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New added</button>
-                        </li>
+                        </li> --> 
                     </ul>
                     <a href="/allProducts" class="view-more d-none d-md-flex">View More<i class="fi-rs-angle-double-small-right"></i></a>
                 </div>
@@ -460,7 +450,7 @@
                                                 </a>
                                             </div>
                                             <div class="product-action-1">
-                                                <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
+                                                <a aria-label="Quick view" class="action-btn hover-up" href="/products/<%= product._id %>"><i class="fi-rs-eye"></i></a>
                                                 <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
                                             
                                             </div>
@@ -492,7 +482,7 @@
                                             
                                             </div>
                                             <div class="product-action-1 show">
-                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= product._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -545,7 +535,7 @@
                                 </div>
                             </div>
                         </div> -->
-                        <!-- Assuming this is inside your loop to display products -->
+                        
                         <% newProducts.forEach(newProduct => { %>
                             <div class="product-cart-wrap small hover-up">
                                 <div class="product-img-action-wrap">
@@ -556,14 +546,11 @@
                                         </a>
                                     </div>
                                     <div class="product-action-1">
-                                        <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
+                                        <a aria-label="Quick view" class="action-btn small hover-up" href="shop-wishlist.html">>
                                             <i class="fi-rs-eye"></i>
                                         </a>
                                         <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0">
                                             <i class="fi-rs-heart"></i>
-                                        </a>
-                                        <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0">
-                                            <i class="fi-rs-shuffle"></i>
                                         </a>
                                     </div>
                                     <div class="product-badges product-badges-position product-badges-mrg">
@@ -638,14 +625,14 @@
                     <div class="heading-tab-right wow fadeIn animated">
                         <ul class="nav nav-tabs right no-border" id="myTab-1" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Featured</button>
+                                <button class="nav-link active" id="nav-tab-one-1" data-bs-toggle="tab" data-bs-target="#tab-one-1" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Popular</button>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <!-- <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="nav-tab-two-1" data-bs-toggle="tab" data-bs-target="#tab-two-1" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Popular</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="nav-tab-three-1" data-bs-toggle="tab" data-bs-target="#tab-three-1" type="button" role="tab" aria-controls="tab-three" aria-selected="false">New added</button>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
@@ -682,7 +669,7 @@
                                                     <div class="product-action-1">
                                                         <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
                                                         <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                                        <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                                                       
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">
                                                         <span class="<%= product.badgeClass %>"><%= product.badgeText %></span>
@@ -705,7 +692,7 @@
                                                         <% } %>
                                                     </div>
                                                     <div class="product-action-1 show">
-                                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= product._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -744,7 +731,7 @@
                                                     <span class="old-price">$145.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div> -->
@@ -789,7 +776,7 @@
                                                     <span class="old-price">$245.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -825,7 +812,7 @@
                                                     <span class="old-price">$145.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -861,7 +848,7 @@
                                                     <span class="old-price">$156.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -897,7 +884,7 @@
                                                     <span class="old-price">$245.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -933,7 +920,7 @@
                                                     <span class="old-price">$245.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -976,7 +963,7 @@
                                                     <span class="old-price">$245.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1012,7 +999,7 @@
                                                     <span class="old-price">$145.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1048,7 +1035,7 @@
                                                     <span class="old-price">$156.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1085,7 +1072,7 @@
                                                     <span class="old-price">$245.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1122,7 +1109,7 @@
                                                     <span class="old-price">$245.8</span>
                                                 </div>
                                                 <div class="product-action-1 show">
-                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                                    <a aria-label="Add To Cart" class="action-btn hover-up" href="/cart/add/<%= products._id %>"><i class="fi-rs-shopping-bag-add"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -1140,31 +1127,6 @@
         
     </main>
     <footer class="main">
-        <section class="newsletter p-30 text-white wow fadeIn animated">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 mb-md-3 mb-lg-0">
-                        <div class="row align-items-center">
-                            <div class="col flex-horizontal-center">
-                                <img class="icon-email" src="assets/imgs/theme/icons/icon-email.svg" alt="">
-                                <h4 class="font-size-20 mb-0 ml-3">Sign up to Newsletter</h4>
-                            </div>
-                            <div class="col my-4 my-md-0 des">
-                                <h5 class="font-size-15 ml-4 mb-0">...and receive <strong>$25 coupon for first shopping.</strong></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5">
-                        <!-- Subscribe Form -->
-                        <form class="form-subcriber d-flex wow fadeIn animated">
-                            <input type="email" class="form-control bg-white font-small" placeholder="Enter your email">
-                            <button class="btn bg-dark text-white" type="submit">Subscribe</button>
-                        </form>
-                        <!-- End Subscribe Form -->
-                    </div>
-                </div>
-            </div>
-        </section>
         <section class="section-padding footer-mid">
             <div class="container pt-15 pb-20">
                 <div class="row">
@@ -1282,7 +1244,48 @@
     <!-- Template  JS -->
     <script src="assets/js/main.js"></script>
     <script src="assets/js/shop.js"></script>
+    
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+          // Prevent form submission
+          $('#search-form').on('submit', function(e) {
+            e.preventDefault();
+          });
+      
+          // Show suggestions as user types
+          $('#search-input').on('keyup', function() {
+            const query = $(this).val();
+            if (query.length > 2) {
+              $.ajax({
+                url: '/search',
+                method: 'GET',
+                data: { q: query },
+                success: function(data) {
+                  $('#search-suggestions').empty();
+                  data.forEach(product => {
+                    $('#search-suggestions').append(`
+                    <a href="#"><div class="suggestion-item" data-id="${product._id}">
+                        ${product.title}
+                      </div>
+                    </a>
+                    `);
+                  });
+                }
+              });
+            } else {
+              $('#search-suggestions').empty();
+            }
+          });
+      
+          // Redirect to product detail view on suggestion click
+          $(document).on('click', '.suggestion-item', function() {
+            const productId = $(this).data('id');
+            window.location.href = `/products/${productId}`;
+          });
+        });
+      </script>
    
 </body>
 

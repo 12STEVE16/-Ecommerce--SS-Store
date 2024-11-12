@@ -3,10 +3,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import ejs from 'ejs';
 import mongoose from 'mongoose';
+import MongoStore from 'connect-mongo';
 import session from 'express-session';
 import passport from 'passport';
 import dotenv from 'dotenv';
-import MongoStore from 'connect-mongo'
 import  authRouter from './Routes/authRoutes.js'
 import  adminRoutes from './Routes/adminRoutes.js'
 import { setupPassport } from './middleware/passport.js';
@@ -32,14 +32,14 @@ app.use(session(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash())
-mongoose.connect(process.env.DB_CONNECTION_STRING, {
-})
+mongoose.connect(process.env.DB_CONNECTION_STRING, {})
   .then(() => {
     console.log('Connected to MongoDB');
   })
   .catch((error) => {
     console.error('Error connecting to MongoDB:', error);
   });
+
 
   
   setupPassport();

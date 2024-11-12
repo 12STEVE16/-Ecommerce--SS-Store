@@ -40,5 +40,6 @@ router.get('/logout', (req, res) => {
   });
 });
 
+router.post('/updatePassword', islogged,authController.updatePassword);
 
 export default router;

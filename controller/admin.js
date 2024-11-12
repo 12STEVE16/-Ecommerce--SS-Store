@@ -336,17 +336,20 @@ export const renderEditProduct = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
   
-  console.log("body:",req.body)
+  // console.log("body:",req.body)
   
   try {
     const productId = req.body.productId;
     const product = await Product.findById(productId);
-
+    const productDiscount = req.body.productDiscount;
+    const regularPrice=req.body.regularPrice;
     // Update product details based on the form data
     product.title = req.body.title;
     product.productInformation = req.body.productInformation;
     product.description = req.body.description;
     product.regularPrice = parseFloat(req.body.regularPrice);
+    product.offerPrice = productDiscount && !isNaN(parseFloat(productDiscount)) ? parseFloat((regularPrice * (1 - parseFloat(productDiscount) / 100)).toFixed(2)) : null;
+
     product.size = req.body.size;
     product.stock = parseInt(req.body.stock);
     product.productDiscount = req.body.productDiscount !== '' ? parseFloat(req.body.productDiscount) : null;
