@@ -61,6 +61,21 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  wishlist: {
+    type: [
+      {
+        productId: {
+          type: mongoose.Types.ObjectId,
+          ref: 'Product',
+        },
+        addedOn: {
+          type: Date,
+          default: Date.now,
+        },
+      },
+    ],
+    default: [],
+  },
   cart: {
     type: [
       {
@@ -76,6 +91,12 @@ const userSchema = new mongoose.Schema({
     ],
     default: [],
   },
+  orders: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Order',
+    },
+  ],
 
 });
 
